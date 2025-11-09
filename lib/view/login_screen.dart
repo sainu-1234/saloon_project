@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/utils/color_utils.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -46,9 +47,7 @@ class LoginScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                    const Color.fromARGB(255, 1, 54, 178),
-                  ),
+                  backgroundColor: WidgetStatePropertyAll(ColorUtils.blue),
                   foregroundColor: WidgetStatePropertyAll(Colors.white),
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
