@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:saloon_project/utils/color_utils.dart';
 import 'package:saloon_project/view/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 4, 20, 235),
+      backgroundColor: ColorUtils.blue,
       body: Center(
         child: Text(
           "SalonMate",
