@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/view/otp_screen.dart';
 import 'package:saloon_project/view/splash_screen.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: OtpScreen());
   }
 }
 
