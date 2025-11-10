@@ -4,7 +4,6 @@ import 'package:saloon_project/view/login_screen.dart';
 import 'package:saloon_project/view/otp_screen.dart';
 import 'package:saloon_project/view/register_screen.dart';
 
-
 void main() {
   runApp(MyApp());
 }
