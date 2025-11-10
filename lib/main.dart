@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:saloon_project/view/login_screen.dart';
-import 'package:saloon_project/view/otp_screen.dart';
 
 void main() {
   runApp(MyApp());
