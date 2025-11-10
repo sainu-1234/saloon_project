@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/view/login_screen.dart';
 
-import 'package:saloon_project/view/otp_screen.dart';
 import 'package:saloon_project/view/register_screen.dart';
 
 void main() {
@@ -21,4 +19,3 @@ class MyApp extends StatelessWidget {
 }
 
 // abdu from kuruvambalam
-// sainuuu
