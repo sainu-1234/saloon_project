@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:saloon_project/view/register_screen.dart';
+import 'package:saloon_project/view/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: SplashScreen(),
     );
   }
 }

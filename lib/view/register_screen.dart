@@ -18,6 +18,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     appBar: AppBar(backgroundColor: Colors.transparent,),
       body: Container(
         padding: EdgeInsets.all(15),
         height: double.infinity,
@@ -26,6 +27,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage("assets/images/login.png"),
+             colorFilter: ColorFilter.mode(
+              Colors.black.withValues(alpha: .7),
+              BlendMode.darken,
+            ),
           ),
         ),
         child: Form(
@@ -55,10 +60,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   hintText: "Email",
                   // labelText: "asdfgh",
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 240, 238, 233),
+                   filled: true,
+                  fillColor: Colors.white.withValues(alpha: .7),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                  ),
+                   errorStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -75,9 +85,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   hintText: "User Name",
 
                   filled: true,
-                  fillColor: const Color.fromARGB(255, 240, 238, 233),
+                  fillColor: Colors.white.withValues(alpha: .7),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                  ),
+                   errorStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -94,9 +109,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   hintText: "Password",
 
                   filled: true,
-                  fillColor: const Color.fromARGB(255, 240, 238, 233),
+                  fillColor: Colors.white.withValues(alpha: .7),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
+                  ),
+                   errorStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -111,9 +131,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: conformpasswordcontroller,
                 decoration: InputDecoration(
                   hintText: "Confirm Password",
-
-                  filled: true,
-                  fillColor: const Color.fromARGB(255, 240, 238, 233),
+ filled: true,
+                  fillColor: Colors.white.withValues(alpha: .7),
 
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -135,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
