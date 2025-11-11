@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saloon_project/utils/color_utils.dart';
-import 'package:saloon_project/view/register_screen.dart';
+import 'package:saloon_project/view/Registration_screen/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -203,9 +203,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                       Navigator.push(
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RegisterScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => RegistrationScreen(),
+                        ),
                       );
                     },
                     child: Text(

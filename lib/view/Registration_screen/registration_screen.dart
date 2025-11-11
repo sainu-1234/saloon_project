@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:saloon_project/utils/color_utils.dart';
-import 'package:saloon_project/view/login_screen.dart';
+import 'package:saloon_project/view/Login_screen/login_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final formkey = GlobalKey<FormState>();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController usernamecontroller = TextEditingController();
@@ -18,7 +18,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(backgroundColor: Colors.transparent,),
+      appBar: AppBar(backgroundColor: Colors.transparent),
       body: Container(
         padding: EdgeInsets.all(15),
         height: double.infinity,
@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage("assets/images/login.png"),
-             colorFilter: ColorFilter.mode(
+            colorFilter: ColorFilter.mode(
               Colors.black.withValues(alpha: .7),
               BlendMode.darken,
             ),
@@ -60,12 +60,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   hintText: "Email",
                   // labelText: "asdfgh",
-                   filled: true,
+                  filled: true,
                   fillColor: Colors.white.withValues(alpha: .7),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                   errorStyle: TextStyle(
+                  errorStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -89,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                   errorStyle: TextStyle(
+                  errorStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                   errorStyle: TextStyle(
+                  errorStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: conformpasswordcontroller,
                 decoration: InputDecoration(
                   hintText: "Confirm Password",
- filled: true,
+                  filled: true,
                   fillColor: Colors.white.withValues(alpha: .7),
 
                   border: OutlineInputBorder(

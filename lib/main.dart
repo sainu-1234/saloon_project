@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:saloon_project/view/register_screen.dart';
-import 'package:saloon_project/view/splash_screen.dart';
+import 'package:saloon_project/view/Splash_screen/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
