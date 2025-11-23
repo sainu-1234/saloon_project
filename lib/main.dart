@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
+import 'package:saloon_project/view/Home_screen/home_screen.dart';
 
 import 'package:saloon_project/view/Splash_screen/splash_screen.dart';
 
@@ -13,9 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: BottomNavigationScreen(),
     );
   }
 }
-
-// abdu from kuruvambalam
