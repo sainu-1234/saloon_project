@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(17),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Enter address or city name",
@@ -81,6 +81,82 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 18),
+              child: Row(
+                children: [
+                  Text(
+                    "Services",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 18),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  spacing: 15,
+                  children: List.generate(
+                    5,
+                    (index) => Container(
+                      height: 60,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 2, 63, 245),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 10,
+                          children: [
+                            Icon(
+                              Icons.star_outline_rounded,
+                              size: 26,
+                              color: const Color.fromARGB(255, 248, 243, 243),
+                            ),
+                            Text(
+                              "Hair Cut",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Nearby Salons",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: const Color.fromARGB(255, 10, 10, 10),
+                    ),
+                  ),
+                  Text(
+                    "View On Map",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                      color: const Color.fromARGB(255, 47, 47, 245),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

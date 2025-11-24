@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:saloon_project/view/Registration_screen/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -236,8 +237,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   onPressed: () {
-                    formkey.currentState!.validate();
-                    setState(() {});
+                    if (formkey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomNavigationScreen(),
+                        ),
+                      );
+                    }
                   },
                   child: Text(
                     "Continue",
