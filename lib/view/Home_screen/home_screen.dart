@@ -48,65 +48,98 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            CarouselSlider.builder(
-              options: CarouselOptions(
-                height: 150,
-                pauseAutoPlayOnTouch: true,
-                pauseAutoPlayOnManualNavigate: true,
-                enlargeCenterPage: true,
-                aspectRatio: 10 / 10,
-                viewportFraction: 0.9,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 5),
-                autoPlayAnimationDuration: Duration(seconds: 1),
-                autoPlayCurve: Curves.ease,
-
-                enlargeFactor: 0.3,
-                scrollDirection: Axis.horizontal,
-              ),
-              itemCount: ColorUtils.myColorlist.length,
-              itemBuilder:
-                  (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      Container(
-                        decoration: BoxDecoration(
-                          color: ColorUtils.myColorlist[itemIndex],
-                          borderRadius: BorderRadius.circular(10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 15,
+                  children: [
+                    CarouselSlider.builder(
+                      options: CarouselOptions(
+                        height: 150,
+                        pauseAutoPlayOnTouch: true,
+                        pauseAutoPlayOnManualNavigate: true,
+                        enlargeCenterPage: true,
+                        aspectRatio: 10 / 10,
+                        viewportFraction: 0.9,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        reverse: false,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 5),
+                        autoPlayAnimationDuration: Duration(seconds: 1),
+                        autoPlayCurve: Curves.ease,
+                        enlargeFactor: 0.3,
+                        scrollDirection: Axis.horizontal,
+                      ),
+                      itemCount: ColorUtils.myColorlist.length,
+                      itemBuilder:
+                          (
+                            BuildContext context,
+                            int itemIndex,
+                            int pageViewIndex,
+                          ) => Container(
+                            decoration: BoxDecoration(
+                              color: ColorUtils.myColorlist[itemIndex],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Services",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    // tabbar here
+                    _buildTabbar(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Nearby Salons",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: const Color.fromARGB(255, 10, 10, 10),
+                          ),
+                        ),
+                        Text(
+                          "View On Map",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            color: const Color.fromARGB(255, 47, 47, 245),
+                          ),
+                        ),
+                      ],
+                    ),
+                    ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => Container(
+                        // height: 400,
+                        // width: 400,
+                        // color: Colors.black,
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 200,
+                              width: 200,
+                              decoration: BoxDecoration(color: Colors.amber),
+                            ),
+                          ],
                         ),
                       ),
-            ),
-            Row(
-              children: [
-                Text(
-                  "Services",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            // tabbar here
-            _buildTabbar(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Nearby Salons",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: const Color.fromARGB(255, 10, 10, 10),
-                  ),
-                ),
-                Text(
-                  "View On Map",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                    color: const Color.fromARGB(255, 47, 47, 245),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),
