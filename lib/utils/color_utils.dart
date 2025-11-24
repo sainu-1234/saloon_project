@@ -20,49 +20,66 @@ class TabBarUtils {
   ];
 }
 
-class ListviewUtils {
-  late List<Map<String, dynamic>> listelements = [
+class SaloonDataUtils {
+  static const List<Map<String, dynamic>> listelements = [
     {
-      "photo": "assets/images/listview.1.jpg",
+      "photo":
+          "https://images.pexels.com/photos/7518741/pexels-photo-7518741.jpeg",
       "name": "Glam Haven",
       "location": "PerinthalManna",
-      "rating": "6.7(335)",
-      "distaence": "2 km",
+      "rating": "6.7",
+      "reviewcount": "(312)",
+      "distance": "2 km",
     },
     {
-      "photo": "assets/images/listview.2.jpg",
+      "photo":
+          "https://images.pexels.com/photos/7518739/pexels-photo-7518739.jpeg",
       "name": "Skincare Beauty",
       "location": "Pattambi",
-      "rating": "7.7(312)",
-      "distaence": "1 km",
+      "rating": "7.7",
+      "reviewcount": "(382)",
+
+      "distance": "1 km",
     },
     {
-      "photo": "assets/images/listview.3.jpg",
+      "photo":
+          "https://images.pexels.com/photos/4969838/pexels-photo-4969838.jpeg",
       "name": "Sparkle Studio",
       "location": "PerinthalManna",
-      "rating": "4.7(312)",
-      "distaence": "2 km",
+      "rating": "4.7",
+      "reviewcount": "(236)",
+
+      "distance": "2 km",
     },
     {
-      "photo": "assets/images/listview.4.jpg",
+      "photo":
+          "https://images.pexels.com/photos/29189823/pexels-photo-29189823.jpeg",
       "name": "Beauty Boulevard",
       "location": "Malappuram",
-      "rating": "8.7(382)",
-      "distaence": "4 km",
+      "rating": "8.7",
+      "reviewcount": "(195)",
+
+      "distance": "4 km",
     },
     {
-      "photo": "assets/images/listview.5.jpg",
+      "photo":
+          "https://images.pexels.com/photos/1813346/pexels-photo-1813346.jpeg",
       "name": "Trendy Tresses",
       "location": "Tirur",
-      "rating": "9.7(453)",
-      "distaence": "7 km",
+      "rating": "9.7",
+      "reviewcount": "(212)",
+
+      "distance": "7 km",
     },
     {
-      "photo": "assets/images/listview.6.jpg",
+      "photo":
+          "https://images.pexels.com/photos/34865582/pexels-photo-34865582.jpeg",
       "name": "Gorgeous Glow",
       "location": "Valanchery",
-      "rating": "9.7(312)",
-      "distaence": "5km",
+      "rating": "9.7",
+      "reviewcount": "(328)",
+
+      "distance": "5km",
     },
   ];
 }

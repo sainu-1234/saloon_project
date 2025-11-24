@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:saloon_project/view/Home_screen/home_screen.dart';
 
-import 'package:saloon_project/view/Splash_screen/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
