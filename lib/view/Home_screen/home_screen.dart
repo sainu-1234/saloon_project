@@ -1,5 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart'
-    show CarouselOptions, CarouselSlider;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:saloon_project/utils/color_utils.dart';
 
@@ -17,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         child: Column(
           spacing: 15,
           children: [
@@ -124,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
           return InkWell(
             onTap: () {
-            
               setState(() {
                 currentIndex = index; //  Update selected tab
               });
