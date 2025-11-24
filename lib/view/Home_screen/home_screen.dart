@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/view/Saloon_detailes_screen/saloon_detailes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -96,8 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     ),
                 //   ],
                 // ),
-                const SizedBox(height: 10),
-
+                // const SizedBox(height: 10),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -119,12 +119,11 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.location_on_outlined, color: Colors.blue, size: 25),
 
             const SizedBox(width: 8),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -144,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(width: 4),
+
                     Icon(Icons.keyboard_arrow_down_rounded, size: 22),
                   ],
                 ),
@@ -192,101 +191,109 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //  SALON CARD
   Widget _buildSalonCard(int index) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 10,
-            spreadRadius: 2,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              SaloonDataUtils.listelements[index]["photo"],
-              width: 95,
-              height: 95,
-              fit: BoxFit.cover,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SaloonDetailesScreen()),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 10,
+              spreadRadius: 2,
+              offset: const Offset(0, 4),
             ),
-          ),
-          const SizedBox(width: 12),
+          ],
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                SaloonDataUtils.listelements[index]["photo"],
+                width: 95,
+                height: 95,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 12),
 
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        SaloonDataUtils.listelements[index]["name"],
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          SaloonDataUtils.listelements[index]["name"],
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      SaloonDataUtils.listelements[index]["distance"],
-                      style: TextStyle(color: Colors.grey.shade600),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 6),
-
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      size: 18,
-                      color: Colors.grey.shade500,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      SaloonDataUtils.listelements[index]["location"],
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey.shade600,
+                      Text(
+                        SaloonDataUtils.listelements[index]["distance"],
+                        style: TextStyle(color: Colors.grey.shade600),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-                const SizedBox(height: 8),
+                  const SizedBox(height: 6),
 
-                Row(
-                  children: [
-                    Icon(Icons.star, size: 20, color: Colors.amber),
-                    const SizedBox(width: 4),
-                    Text(
-                      SaloonDataUtils.listelements[index]["rating"],
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 18,
+                        color: Colors.grey.shade500,
                       ),
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      SaloonDataUtils.listelements[index]["reviewcount"],
-                      style: TextStyle(color: Colors.grey.shade600),
-                    ),
-                  ],
-                ),
-              ],
+                      const SizedBox(width: 4),
+                      Text(
+                        SaloonDataUtils.listelements[index]["location"],
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  Row(
+                    children: [
+                      Icon(Icons.star, size: 20, color: Colors.amber),
+                      const SizedBox(width: 4),
+                      Text(
+                        SaloonDataUtils.listelements[index]["rating"],
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        SaloonDataUtils.listelements[index]["reviewcount"],
+                        style: TextStyle(color: Colors.grey.shade600),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -305,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Container(
               margin: EdgeInsets.only(right: 8),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 012),
               decoration: BoxDecoration(
                 color: isSelected
                     ? ColorUtils.blue
