@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});

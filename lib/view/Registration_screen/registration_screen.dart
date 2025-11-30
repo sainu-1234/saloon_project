@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 import 'package:saloon_project/view/Login_screen/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {

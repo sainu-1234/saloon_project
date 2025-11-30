@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 
 class SaloonDetailesScreen extends StatefulWidget {
   const SaloonDetailesScreen({super.key});
@@ -9,20 +10,16 @@ class SaloonDetailesScreen extends StatefulWidget {
 
 class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
   int currentindex = 0;
-  bool isselect = true;
+  bool isselect = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         actions: [
           Container(
-            child: Center(
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.favorite_border, size: 28),
-              ),
-            ),
             height: 40,
             width: 40,
 
@@ -30,107 +27,223 @@ class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
               color: const Color.fromARGB(255, 242, 241, 238),
               borderRadius: BorderRadius.circular(10),
             ),
+            child: Center(
+              child: IconButton(
+                onPressed: () {
+                  isselect = !isselect;
+                  setState(() {});
+                },
+                icon: Icon(
+                  Icons.favorite,
+                  size: 28,
+                  color: isselect ? Colors.red : Colors.grey,
+                ),
+              ),
+            ),
           ),
           SizedBox(width: 10),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 10,
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    "https://images.pexels.com/photos/705255/pexels-photo-705255.jpeg",
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 24,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          "https://images.pexels.com/photos/705255/pexels-photo-705255.jpeg",
+                        ),
+                      ),
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
-                ),
-                color: Colors.amber,
-                borderRadius: BorderRadius.circular(10),
+                  // SizedBox(height: 24),
+                  Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Hair Avenue",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        spacing: 2,
+                        children: [
+                          Icon(
+                            Icons.location_on_sharp,
+                            size: 16,
+                            color: ColorUtils.textgrey,
+                          ),
+
+                          Expanded(
+                            child: Text(
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              "Pattambi Road,Perinthalmanna,Malappuram",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: ColorUtils.textgrey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        spacing: 2,
+                        children: [
+                          Icon(
+                            Icons.access_time,
+                            size: 14,
+                            color: ColorUtils.textgrey,
+                          ),
+
+                          Text(
+                            " 9AM - 10PM , Mon - Sun",
+                            style: TextStyle(
+                              color: ColorUtils.textgrey,
+
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        spacing: 2,
+                        children: [
+                          Text("⭐", style: TextStyle(fontSize: 14)),
+                          Text(
+                            "4.7 (321)",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: ColorUtils.textgrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "Hair Avenue provides expert haircuts,syling,along with servieces like facials,cleanups,skincare and make to keep you looking your best.",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 5,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: ColorUtils.textgrey,
+                    ),
+                  ),
+
+                  Text(
+                    "Services",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  // Saloon feature card
+                  _buildSaloonFeatures(),
+                ],
               ),
             ),
-            Text(
-              "Hair Avenue",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          ),
+          // continue button 
+          Positioned(
+            left: 15,
+            right: 15,
+            bottom: 15,
+            child: InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(12),
+              child:ContinueButton.continueButton(text: "Continue", clr: ColorUtils.blue, textclr: Colors.white)
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSaloonFeatures() {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: SaloonFeatureUtils.features.length,
+      itemBuilder: (context, index) => Container(
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 8,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
               child: Column(
-                spacing: 2,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    "Pattambi Road,Perinthalmanna,Malappuram",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    SaloonFeatureUtils.features[index]["title"],
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                  Text(
-                    "9AM-10M,Mon - Sun",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    "4.7 (321)",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  SizedBox(height: 4),
+
+                  Row(
+                    children: [
+                      Text(
+                        "Rs ${SaloonFeatureUtils.features[index]["price"]}",
+                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                      ),
+                      SizedBox(width: 16),
+
+                      Icon(Icons.access_time, size: 15, color: Colors.grey),
+
+                      SizedBox(width: 4),
+                      Text(
+                        SaloonFeatureUtils.features[index]["time"],
+                        style: TextStyle(fontSize: 13, color: Colors.grey),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            Text(
-              textAlign: TextAlign.justify,
-              "Hair Avenue provides expert haircuts,syling,along with servieces like facials,cleanups,skincare and make to keep you looking your best.",
-              overflow: TextOverflow.ellipsis,
-              maxLines: 5,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-            ),
 
-            SizedBox(height: 20),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(5, (index) {
-                  isselect = currentindex == index;
-                  return Padding(
-                    padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
-                    child: InkWell(
-                      onTap: () {
-                        currentindex = index;
-                        setState(() {});
-                      },
-                      child: Text(
-                        "sainu",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: isselect
-                              ? const Color.fromARGB(255, 5, 92, 190)
-                              : Colors.black,
-                        ),
-                      ),
-                    ),
-                  );
-                }),
+            Center(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.add_circle_outline,
+                  size: 20,
+                  color: Colors.black87,
+                ),
               ),
             ),
-            // ListView.builder(
-            //   shrinkWrap: true,
-            //   physics: NeverScrollableScrollPhysics(),
-            //   itemCount: 4,
-            //   itemBuilder: (context, index) {
-            //     return Container(
-            //       margin: EdgeInsets.symmetric(vertical: 10),
-            //       child: ListTile(
-            //         title: Text("Hair Cut"),
-            //         subtitle: Text("\$300 30 Mins"),
-            //         trailing: Icon(Icons.add_circle_outline),
-            //       ),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),

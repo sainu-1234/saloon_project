@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorUtils {
   static const Color blue = Color.fromARGB(255, 1, 54, 178);
+  static const Color textgrey = Color(0xFF7F7F7F);
   static List myColorlist = [
     const Color.fromARGB(255, 136, 32, 32),
     const Color.fromARGB(255, 8, 221, 118),
@@ -82,4 +83,39 @@ class SaloonDataUtils {
       "distance": "5km",
     },
   ];
+}
+
+class SaloonFeatureUtils {
+  static const List<Map> features = [
+    {'title': 'Hair cut', 'price': '120.00', 'time': '40 Mins'},
+    {'title': 'Hair Styling', 'price': '150.00', 'time': '45 Mins'},
+    {'title': 'Shaving', 'price': '110.00', 'time': '25 Mins'},
+    {'title': 'Beard Styling', 'price': '150.00', 'time': '45 Mins'},
+    {'title': 'Face Care', 'price': '180.00', 'time': '40 Mins'},
+  ];
+}
+
+class ContinueButton {
+  static Container continueButton({
+    required String text,
+    required Color clr,
+    required Color textclr,
+  }) {
+    return Container(
+      height: 55,
+      decoration: BoxDecoration(
+        color: clr,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: textclr,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
 }

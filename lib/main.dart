@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/view/Home_screen/home_screen.dart';
 import 'package:saloon_project/view/Saloon_detailes_screen/saloon_detailes_screen.dart';
 
 void main() {

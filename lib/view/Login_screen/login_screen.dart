@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:saloon_project/view/Registration_screen/registration_screen.dart';
 

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:saloon_project/utils/color_utils.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 import 'package:saloon_project/view/Saloon_detailes_screen/saloon_detailes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
