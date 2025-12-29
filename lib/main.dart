@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
+import 'package:saloon_project/view/Home_screen/home_screen.dart';
 import 'package:saloon_project/view/Saloon_detailes_screen/saloon_detailes_screen.dart';
 
 void main() {
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SaloonDetailesScreen(),
+      home: BottomNavigationScreen(),
     );
   }
 }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:saloon_project/view/Booking_screen/booking_screen.dart';
+import 'package:saloon_project/view/Favourites_Screen/favourite_screen.dart';
+import 'package:saloon_project/view/Home_screen/home_screen.dart';
+import 'package:saloon_project/view/Profile_screen/profile_screen.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
@@ -12,7 +16,14 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int navigateindex = 0;
   @override
   Widget build(BuildContext context) {
+    List<Widget> screenlist = [
+      HomeScreen(),
+      BookingScreen(),
+      FavouriteScreen(),
+      ProfileScreen(),
+    ];
     return Scaffold(
+      body: screenlist[navigateindex],
       bottomNavigationBar: StylishBottomBar(
         items: [
           BottomBarItem(

@@ -15,9 +15,14 @@ class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromARGB(0, 241, 229, 229),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.from(
+          alpha: 0,
+          red: 0.725,
+          green: 0.431,
+          blue: 0.431,
+        ),
         actions: [
           Container(
             height: 40,
@@ -162,7 +167,7 @@ class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
               ),
             ),
           ),
-          // continue button 
+          // continue button
           Positioned(
             left: 15,
             right: 15,
@@ -170,7 +175,11 @@ class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
             child: InkWell(
               onTap: () {},
               borderRadius: BorderRadius.circular(12),
-              child:ContinueButton.continueButton(text: "Continue", clr: ColorUtils.blue, textclr: Colors.white)
+              child: ContinueButton.continueButton(
+                text: "Continue",
+                clr: ColorUtils.blue,
+                textclr: Colors.white,
+              ),
             ),
           ),
         ],
