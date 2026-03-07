@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:saloon_project/controller/registration_controller/registration_screen_controller.dart';
 import 'package:saloon_project/utils/app_utils.dart';
-import 'package:saloon_project/view/Login_screen/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -18,7 +19,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
       body: Container(
         padding: EdgeInsets.all(15),
         height: double.infinity,
@@ -50,11 +50,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               // SizedBox(height: 10),
               TextFormField(
                 validator: (value) {
-                  // ignore: unrelated_type_equality_checks
-                  if (value != null && value.contains("@")) {
-                    return null;
+                  if (value == null || value.isEmpty) {
+                    return "Email is required";
                   }
-                  return "Please conform The Password";
+                  if (!RegExp(
+                    r'^[\w-.]+@([\w-]+\.)+[\w]{2,4}$',
+                  ).hasMatch(value)) {
+                    return "Enter a valid email";
+                  }
+                  return null;
                 },
                 controller: emailcontroller,
                 decoration: InputDecoration(
@@ -78,7 +82,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   if (value != null && value.isNotEmpty) {
                     return null;
                   }
-                  return "Please check your email";
+                  return "Please check your username";
                 },
                 controller: usernamecontroller,
                 decoration: InputDecoration(
@@ -102,7 +106,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   if (value != null && value.length >= 5) {
                     return null;
                   }
-                  return "Please conform The Password";
+                  return "Please check your password";
                 },
                 controller: passwordcontroller,
                 decoration: InputDecoration(
@@ -126,7 +130,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   if (value != null && value == passwordcontroller.text) {
                     return null;
                   }
-                  return "Please conform The Password";
+                  return "Please confirm the Password";
                 },
                 controller: conformpasswordcontroller,
                 decoration: InputDecoration(
@@ -137,7 +141,40 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  errorStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: .7),
+
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Login",
+
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 50,
@@ -154,12 +191,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      context.read<RegistrationScreenController>().registration(
+                        email: emailcontroller.text,
+                        password: passwordcontroller.text,
+                        context: context,
                       );
                     }
                   },
+
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

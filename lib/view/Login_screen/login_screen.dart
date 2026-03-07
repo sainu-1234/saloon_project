@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:saloon_project/controller/login_controller/login_screen_controller.dart';
 import 'package:saloon_project/utils/app_utils.dart';
-import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:saloon_project/view/Registration_screen/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -238,12 +239,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BottomNavigationScreen(),
-                        ),
-                      );
+                    context
+                          .read<LoginScreenController>()
+                          .onLogin(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            context: context
+                          );
                     }
                   },
                   child: Text(

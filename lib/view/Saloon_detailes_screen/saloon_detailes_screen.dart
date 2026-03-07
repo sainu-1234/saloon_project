@@ -52,7 +52,12 @@ class _SaloonDetailesScreenState extends State<SaloonDetailesScreen> {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 16,
+              bottom: 70,
+            ),
             child: SingleChildScrollView(
               child: Column(
                 spacing: 24,

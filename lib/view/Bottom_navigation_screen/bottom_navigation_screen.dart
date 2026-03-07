@@ -1,65 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:saloon_project/controller/bottom_navbar_screen_controller/bottom_navbar_screen_controller.dart';
+import 'package:saloon_project/utils/app_utils.dart';
 import 'package:saloon_project/view/Booking_screen/booking_screen.dart';
 import 'package:saloon_project/view/Favourites_Screen/favourite_screen.dart';
 import 'package:saloon_project/view/Home_screen/home_screen.dart';
 import 'package:saloon_project/view/Profile_screen/profile_screen.dart';
-import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
-class BottomNavigationScreen extends StatefulWidget {
+class BottomNavigationScreen extends StatelessWidget {
   const BottomNavigationScreen({super.key});
 
   @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
-}
-
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
-  int navigateindex = 0;
-  @override
   Widget build(BuildContext context) {
+    final navProvider = Provider.of<BottomNavProvider>(context);
+
     List<Widget> screenlist = [
       HomeScreen(),
       BookingScreen(),
       FavouriteScreen(),
       ProfileScreen(),
     ];
+
+    final items = [
+      {"icon": Icons.home, "label": "Home"},
+      {"icon": Icons.calendar_month, "label": "Bookings"},
+      {"icon": Icons.favorite, "label": "Favorites"},
+      {"icon": Icons.person, "label": "Profile"},
+    ];
+
     return Scaffold(
-      body: screenlist[navigateindex],
-      bottomNavigationBar: StylishBottomBar(
-        items: [
-          BottomBarItem(
-            icon: Icon(Icons.home_outlined),
-            title: Text("Home"),
-            selectedIcon: Icon(Icons.home),
+      extendBody: true,
+
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 60),
+        child: screenlist[navProvider.currentIndex],
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: const [
+              BoxShadow(color: Colors.black12, blurRadius: 15, spreadRadius: 2),
+            ],
           ),
-          BottomBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            title: Text("Bookings"),
-            selectedIcon: Icon(Icons.calendar_month),
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(items.length, (index) {
+              final isSelected = navProvider.currentIndex == index;
+
+              return Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    navProvider.changeIndex(index);
+                  },
+
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 250),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 6,
+                      horizontal: 6,
+                    ),
+
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? ColorUtils.blue.withValues(alpha: 0.15)
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          items[index]["icon"] as IconData,
+                          size: 22,
+                          color: isSelected ? ColorUtils.blue : Colors.grey,
+                        ),
+
+                        if (isSelected) ...[
+                          Text(
+                            items[index]["label"] as String,
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: ColorUtils.blue,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }),
           ),
-          BottomBarItem(
-            icon: Icon(Icons.favorite_border),
-            title: Text("Favortes"),
-            selectedIcon: Icon(Icons.favorite),
-          ),
-          BottomBarItem(
-            icon: Icon(Icons.person_2_outlined),
-            title: Text("Profile"),
-            selectedIcon: Icon(Icons.person),
-          ),
-        ],
-        option: AnimatedBarOptions(
-          iconSize: 30,
-          barAnimation: BarAnimation.fade,
-          iconStyle: IconStyle.animated,
         ),
-        hasNotch: true,
-        // fabLocation: StylishBarFabLocation.center,
-        borderRadius: BorderRadius.circular(15),
-        currentIndex: navigateindex,
-        onTap: (value) {
-          navigateindex = value;
-          setState(() {});
-        },
       ),
     );
   }

@@ -1,9 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:saloon_project/view/Bottom_navigation_screen/bottom_navigation_screen.dart';
-import 'package:saloon_project/view/Home_screen/home_screen.dart';
-import 'package:saloon_project/view/Saloon_detailes_screen/saloon_detailes_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:saloon_project/controller/bottom_navbar_screen_controller/bottom_navbar_screen_controller.dart';
+import 'package:saloon_project/controller/login_controller/login_screen_controller.dart';
+import 'package:saloon_project/controller/registration_controller/registration_screen_controller.dart';
+import 'package:saloon_project/firebase_options.dart';
+import 'package:saloon_project/view/Splash_screen/splash_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
 
@@ -12,9 +18,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BottomNavigationScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => RegistrationScreenController(),
+        ),
+        ChangeNotifierProvider(create: (context) => LoginScreenController()),
+        ChangeNotifierProvider(create: (context) => BottomNavProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }

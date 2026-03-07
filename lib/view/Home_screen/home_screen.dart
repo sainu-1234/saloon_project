@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "Services",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 // tabbar here
                 _buildTabbar(),
 
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.location_on_outlined, color: Colors.blue, size: 25),
+            Icon(Icons.location_on_outlined, color: ColorUtils.blue, size: 25),
 
             const SizedBox(width: 8),
             Column(
@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.symmetric(vertical: 12),
+        margin: const EdgeInsets.only(top: 14),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
